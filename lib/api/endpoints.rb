@@ -1,4 +1,6 @@
-module Api
-  module Endpoints
+module Lunching
+  module Api
+    module Endpoints
+    end
   end
 end
