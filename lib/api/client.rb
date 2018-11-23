@@ -4,8 +4,8 @@ module Lunching
       include Endpoints
 
       API_DOMAIN =  'https://api.lunching.pl/api'.freeze
-      LOGIN_EMAIL = 'jedrzej.bryll@netguru.co'.freeze
-      PASSWORD =    'ZUvz9uanaphwetatg#QPdTjG'.freeze
+      LOGIN_EMAIL = ''.freeze
+      PASSWORD =    ''.freeze
 
       def initialize
         @client = HTTP.basic_auth(user: LOGIN_EMAIL, pass: PASSWORD)
@@ -20,8 +20,8 @@ module Lunching
 
       private
 
-      [:get, :post, :delete].each do |request_method|
-        private(
+      %i[get post delete].each do |request_method|
+        private( # rubocop:disable Style/AccessModifierDeclarations
           define_method(request_method) do |path, **kwargs|
             @client.public_send(request_method, "#{API_DOMAIN}#{path}", *kwargs)
           end
