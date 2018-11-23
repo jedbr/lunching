@@ -8,7 +8,7 @@ module Lunching
       end
 
       def menu
-        Api::Client.new.restaurant_categories(@lunching_id)
+        Api::Client.restaurant_categories(@lunching_id)
       end
 
     end
