@@ -1,6 +1,9 @@
 AllCops:
   TargetRubyVersion: 2.3.1
 
+Metrics/LineLength:
+  Max: 100
+
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
