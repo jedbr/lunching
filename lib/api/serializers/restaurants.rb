@@ -1,6 +1,3 @@
-require_relative 'base'
-require_relative '../../model/restaurant'
-
 module Lunching
   module Api
     module Serializers

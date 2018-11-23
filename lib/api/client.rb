@@ -1,8 +1,3 @@
-require 'http'
-require_relative 'endpoints'
-require_relative 'serializers/restaurants'
-require_relative 'serializers/restaurant_categories'
-
 module Lunching
   module Api
     class Client
