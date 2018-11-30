@@ -1,6 +1,6 @@
 module Lunching
   module Api
-    module Serializers
+    module Deserializer
       class RestaurantCategories < Base; end
     end
   end

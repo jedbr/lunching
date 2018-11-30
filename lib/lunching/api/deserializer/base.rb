@@ -1,6 +1,6 @@
 module Lunching
   module Api
-    module Serializers
+    module Deserializer
       class Base
 
         def initialize(response)

@@ -8,8 +8,8 @@ module Lunching
       class << self
         Endpoints.public_instance_methods.each do |endpoint_name|
           define_method(endpoint_name) do |*args, **kwargs|
-            serializer = serializer_for(endpoint_name)
-            serializer.new(super(*args, *kwargs)).call
+            deserializer = deserializer_for(endpoint_name)
+            deserializer.new(super(*args, *kwargs)).call
           end
         end
 
@@ -23,9 +23,9 @@ module Lunching
           )
         end
 
-        def serializer_for(endpoint_name)
+        def deserializer_for(endpoint_name)
           const_name = endpoint_name.to_s.split("_").map(&:capitalize).join
-          Lunching::Api::Serializers.const_get(const_name)
+          Deserializer.const_get(const_name)
         end
       end
 
