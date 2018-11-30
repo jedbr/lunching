@@ -3,11 +3,7 @@ module Lunching
     class Client
       extend Endpoints
 
-      API_DOMAIN =  'https://api.lunching.pl/api'.freeze
-      LOGIN_EMAIL = ''.freeze
-      PASSWORD =    ''.freeze
-
-      @client = HTTP.basic_auth(user: LOGIN_EMAIL, pass: PASSWORD)
+      @client = HTTP.basic_auth(user: Config.lunching_login_email, pass: Config.lunching_password)
 
       class << self
         Endpoints.public_instance_methods.each do |endpoint_name|
@@ -22,7 +18,7 @@ module Lunching
         %i[get post delete].each do |request_method|
           private( # rubocop:disable Style/AccessModifierDeclarations
             define_method(request_method) do |path, **kwargs|
-              @client.public_send(request_method, "#{API_DOMAIN}#{path}", *kwargs)
+              @client.public_send(request_method, "#{Config.api_domain}#{path}", *kwargs)
             end
           )
         end
