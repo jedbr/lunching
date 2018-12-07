@@ -5,7 +5,7 @@ module Lunching
 
         ITEM_SIZE_MAPPER = proc do |size|
           Model::ItemSize.new(
-            lunching_id: size['itemFeatureId'],
+            item_id: size['itemFeatureId'],
             price: Float(size['price'])
           )
         end
