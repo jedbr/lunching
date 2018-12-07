@@ -12,6 +12,20 @@ module Lunching
         get("/restaurants/#{restaurant_id}/categories")
       end
 
+      def order(dish_id)
+        post('/account/current-basket',
+          json: {
+            basketItems: [ {
+              basketItems: [],
+              discount: 0,
+              itemFeatureId: dish_id,
+              price: 12.5,
+              quantity: 1
+            }]
+          }
+        )
+      end
+
     end
   end
 end

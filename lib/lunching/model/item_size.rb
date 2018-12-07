@@ -2,9 +2,13 @@ module Lunching
   module Model
     class ItemSize
 
-      def initialize(lunching_id:, price:)
-        @lunching_id = lunching_id
+      def initialize(item_id:, price:)
+        @item_id = item_id
         @price = price
+      end
+
+      def order
+        Api::Client.order(@item_id)
       end
 
     end
