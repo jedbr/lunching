@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'lunching'
+
+puts "What would you like to order?"
+answer = gets.chomp
+
+client = Lunching::Api::Client
+puts client.order(answer)
