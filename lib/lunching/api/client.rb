@@ -18,7 +18,7 @@ module Lunching
         %i[get post delete].each do |request_method|
           private( # rubocop:disable Style/AccessModifierDeclarations
             define_method(request_method) do |path, **kwargs|
-              @client.public_send(request_method, "#{Config.api_domain}#{path}", *kwargs)
+              @client.public_send(request_method, "#{Config.api_domain}#{path}", **kwargs)
             end
           )
         end
