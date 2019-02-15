@@ -1,4 +1,4 @@
-# require File.expand_path('lib/lunching', __FILE__)
+require File.expand_path('../lib/lunching', __FILE__)
 
 Gem::Specification.new do |s|
   s.name = 'lunching'
@@ -6,9 +6,10 @@ Gem::Specification.new do |s|
   s.date = '2018-12-12'
   s.summary = 'To order fooooood'
   s.authors = ['Jędrzej Bryll', 'Szymon Sobecki']
-  s.files = [
-    "lib/lunching.rb"
+  s.files = Dir[
+    'lib/**/*.rb',
+    'Gemfile',
+    'config_sample.yml'
   ]
-  s.require_paths = ["lib"]
-  s.executables   = ["lunching"]
+  s.executables   = ['lunching', 'lunching_start']
 end

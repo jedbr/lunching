@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'lunching'
+require 'yaml'
+
+class LunchingStart
+
+  # if File.join(Dir.home, '.lunching').exist?
+  #   puts 'You have already logged in!'
+  # else
+  Dir.mkdir(File.join(Dir.home, '.lunching'))
+  # end
+
+  puts 'Please enter your login:'
+  login = gets.chomp
+
+  puts 'Please enter your password:'
+  password = gets.chomp
+
+  data = {
+    api_domain: "https://api.lunching.pl/api",
+    lunching_login_email: login,
+    lunching_password: password
+  }
+
+  File.open(File.join(Dir.home, '/.lunching/config.yml'), 'w') { |file| file.write(data.to_yaml) }
+end
