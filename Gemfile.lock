@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    chronic (0.10.2)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     http (4.0.0)
@@ -15,18 +16,23 @@ GEM
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
     public_suffix (3.0.3)
+    rake (12.3.2)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    whenever (0.10.0)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   http
+  rake
+  whenever
 
 RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.16.4
+   1.16.6

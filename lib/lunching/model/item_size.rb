@@ -2,6 +2,8 @@ module Lunching
   module Model
     class ItemSize
 
+      attr_reader :lunching_id, :price
+
       def initialize(lunching_id:, price:)
         @lunching_id = lunching_id
         @price = price

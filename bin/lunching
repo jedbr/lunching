@@ -1,9 +1,51 @@
 #!/usr/bin/env ruby
 
 require 'lunching'
-
-puts "What would you like to order?"
-answer = gets.chomp
-
 client = Lunching::Api::Client
-puts client.order(answer)
+restaurants = client.restaurants.each_with_index.map { |x, i| (i + 1).to_s + '. ' + x.name }
+puts "Which restaurant do you want order from?"
+puts restaurants
+
+restaurant_answer = gets.chomp
+
+chosen_restaurant = client.restaurants.find_all { |x| x.name.strip == restaurant_answer }
+
+while chosen_restaurant.length != 1
+  puts 'Type correct name of the restaurant.'
+  restaurant_answer = gets.chomp
+  chosen_restaurant = client.restaurants.find_all { |x| x.name.strip == restaurant_answer }
+end
+
+restaurant_id = chosen_restaurant[0].lunching_id
+restaurant = Lunching::Model::Restaurant.new(lunching_id: restaurant_id, name: restaurant_answer)
+
+puts 'Choose category:'
+puts restaurant.show_categories
+
+category_answer = gets.chomp
+x = Integer(category_answer) rescue false
+
+while x == false || category_answer.to_i > restaurant.show_categories.length
+  puts 'Please enter the correct number.'
+  category_answer = gets.chomp
+  x = Integer(category_answer) rescue false
+end
+
+dishes = restaurant.choose_category(category_answer)
+restaurant_menu = dishes.show_menu
+
+puts 'Here is the menu:'
+puts restaurant_menu
+
+puts "What would you like to order? Enter the number"
+dish_answer = gets.chomp
+x = Integer(dish_answer) rescue false
+
+while x == false || dish_answer.to_i > restaurant_menu.length
+  puts 'Please enter the correct number.'
+  dish_answer = gets.chomp
+  x = Integer(dish_answer) rescue false
+end
+
+dish = dishes.choose_dish(dish_answer)
+dish.order
